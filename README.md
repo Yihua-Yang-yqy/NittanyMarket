@@ -57,6 +57,9 @@ Other files in the submission are not critical to this phase and are not explain
 
 **This project assumes the database connection information is as follows: the MySQL server is hosted on `localhost`, with `root` as the username and `admin` as the password. Additionally, the project will connect to a database named `phase2`, which is automatically created if it does not already exist. The code initializes the database connection and ensures that the necessary database is available for operations. Ensure that the MySQL server is running locally with these credentials, or modify the connection parameters accordingly.**
 
+## NOTE: Project Phase Discrepancies
+
+**Please note that while the project report was written during Phase 1, the code implementation took place in Phase 2. As a result, there are some differences between the features described in the report and the actual code. These changes primarily reflect adjustments made during the development process. Be sure to refer to the actual code for the most accurate and up-to-date functionality.**
 
 For further details, refer to the comments in the `app.py` and `Create_Insert.ipynb` files.
 
