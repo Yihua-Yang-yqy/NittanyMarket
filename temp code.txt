@@ -1,0 +1,16 @@
+@app.route('/changeStatus')
+def changeListingStatus():
+    '''Change the Status of a Product Listing from 1/NULL to 0 (inactive) or from 0 to 1 (active)''' 
+    
+    # get current seller, categories from session
+    seller=session['user']
+    categories=session['categories']
+    
+    # get the product listing published by the current buyer
+    productListing = getProductListings(seller)
+    
+    return render_template('publishProductListing.html', user=seller, categories=categories,product_listing=productListing)
+
+<form action="/shoppingCart.html" method="POST">
+        <button name='addCart' type="submit" class="btn btn-primary" value={{ listing_id }}>Add to Shopping Cart</button>
+    </form>

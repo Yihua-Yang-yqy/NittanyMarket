@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+
+    <h1 style="color:white;background-color:rgb(30,64,124);">
+        Shopping Cart
+    </h1>
+    {% if result %}
+    <table class="table table-dark">
+        <tr style="color:white;background-color:rgb(30,64,124);">
+            <th scope="col"> Shopping Cart ID</th>
+            <th scope="col"> Category</th>
+            <th scope="col"> Title</th>
+            <th scope="col"> Product Name</th>
+            <th scope="col"> Product Description</th>
+            <th scope="col"> Price</th>
+            <th scope="col"> Quantity</th>
+            <th scope="col"> Sold By</th>
+            <th scope="col"> Operation</th>
+
+        </tr>
+        <tbody>
+            {% for shop_id, category, title, product_name, product_description, price, quantity, sold_by, listing_id in result%}
+            <tr style="background-color:powderblue;">
+                <td> {{ shop_id }}</td>
+                <td> {{ category }} </td>
+                <td> {{ title }} </td>
+                <td> {{ product_name }} </td>
+                <td> {{ product_description }} </td>
+                <td> {{ price }} </td>
+                <td> {{ quantity }} </td>
+                <td> {{ sold_by }} </td>
+                <td>
+                    <div>
+                    <form action="/placeOrder.html" method="POST">
+                        <button name='buy' type="submit" class="btn btn-primary" value={{ listing_id }}>Buy</button>
+                    </form>
+                    <form action="/shoppingCart.html" method="POST">
+                        <button name='remove' type="submit" class="btn btn-primary" value={{ shop_id }}>Remove</button>
+                    </form>
+                    </div>
+                </td>
+
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    
+    
+    {% else %}
+    <h2>No items in your shopping cart!</h2>
+    {% endif %}
+    <br>
+    <a href="checkingInfo.html">
+        <input type="submit" value="Back" />
+    </a>
+</head>
+</body>
+
+</html>

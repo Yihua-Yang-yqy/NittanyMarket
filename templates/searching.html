@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+<h2>Search result of <b style="color:rgb(38,62,126);">{{ value }}</b> is listed below: </h2>
+
+<a href="/">
+    <input type="submit" value="Back to Main Page"/>
+  </a>
+<br><br>
+{% if result %}
+<table class="table table-dark">
+    <tr style="color:white;background-color:rgb(30,64,124);">
+        <th scope="col"> Category</th>
+        <th scope="col"> Title</th>
+        <th scope="col"> Product Name</th>
+        <th scope="col"> Product Description</th>
+        <th scope="col"> Price</th>
+        <th scope="col"> Quantity</th>
+        <th scope="col"> Sold By</th>
+        <th scope="col"></th>
+    </tr>
+    <tbody>
+        {% for category, title, product_name, product_description, price, quantity, sold_by,listing_id in result%}
+        <tr style="background-color:powderblue;">
+            <td> {{ category }} </td>
+            <td> {{ title }} </td>
+            <td> {{ product_name }} </td>
+            <td> {{ product_description }} </td>
+            <td> {{ price }} </td>
+            <td> {{ quantity }} </td>
+            <td> {{ sold_by }} </td>
+            <td>
+                <form action="/placeOrder.html" method="POST">
+                    <button name='buy' type="submit" class="btn btn-primary" value={{ listing_id }}>Buy</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<b>No result</b>
+{% endif %}
+</body>
+
+</html>

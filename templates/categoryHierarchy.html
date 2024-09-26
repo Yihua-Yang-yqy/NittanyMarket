@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <label for="category">
+        <h3 style="color:DodgerBlue;"> Select a specific category/subcategory to browse:</h3>
+    </label>
+
+
+
+    <form action="/categoryHierarchy.html" method="POST">
+        <select name="category" id="category">
+            {% for element in value%}
+            <option value="{{element}}">{{element}}</option>
+            {% endfor %}
+        </select>
+        <button type="submit" class="btn btn-primary">View</button>
+    </form>
+
+    </label>
+    <br>
+    <a href="/">
+        <input type="submit" value="Back to Main Page" />
+    </a>
+    <br><br>
+    {% if show %}
+    <p style="color:rgb(92, 115, 138);"> Now showing category/subcategory:
+    <h3 style="color:rgb(0,142,226);">{{ show }}</h3>
+    </p>
+
+    <table class="table table-dark">
+        <tr style="color:white;background-color:rgb(30,64,124);">
+            <th scope="col"> Title</th>
+            <th scope="col"> Product Name</th>
+            <th scope="col"> Product Description</th>
+            <th scope="col"> Price</th>
+            <th scope="col"> Quantity</th>
+            <th scope="col"> Sold By</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+
+        </tr>
+        <tbody>
+            {% for title, product_name, product_description, price, quantity, sold_by, listing_id in result%}
+            <tr style="background-color:powderblue;">
+                <td> {{ title }} </td>
+                <td> {{ product_name }} </td>
+                <td> {{ product_description }} </td>
+                <td> {{ price }} </td>
+                <td> {{ quantity }} </td>
+                <td> {{ sold_by }} </td>
+                <td>
+                    <form action="/placeOrder.html" method="POST">
+                        <button name='buy' type="submit" class="btn btn-primary" value={{ listing_id }}>Buy</button>
+                    </form>
+                    </td>
+                    <td>
+                    <form action="/shoppingCart.html" method="POST">
+                        <button name='addCart' type="submit" class="btn btn-primary" value={{ listing_id }}>Add to Cart</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+
+    {% if null %}
+    <h3>There is no result in this category/subcategory</h3>
+    {% endif %}
+</body>
+
+</html>
